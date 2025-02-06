@@ -1,0 +1,3 @@
+[
+    {"id": "0", "name": "Sample Printer", "host": "OCTOPRINT URL HERE", "filament": "rgb(12, 246, 0)", "key": "OCTOPRINT KEY HERE", "background": "DeepSkyBlue", "port": "/dev/ttyUSB0", "locked": false}
+]

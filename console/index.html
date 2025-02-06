@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang = "en-gb">
+    <head>
+        <meta charset = "utf-8">
+        <link rel = "stylesheet" href = "/css/style.css">
+        <link rel = "icon" href = "/img/favicon.svg" sizes = "any" type = "image/svg+xml">
+        <script type = "text/JavaScript" src = "/js/config.js"></script>
+        <script type = "text/JavaScript" src = "/js/refresh.js"></script>
+        <script type = "text/JavaScript" src = "/js/power.js"></script>
+        <script type = "text/JavaScript" src = "/js/kiosk.js"></script>
+        <title>3D Printer Console</title>
+    </head>
+    <body>
+        <header>
+            <button class = "LiveViewButton" onclick = "OpenLivePanel ()">📺 Live View</button>
+            <img src = "/img/favicon.svg" class = "Logo"></img>
+            <h1>3D Printer Console</h1>
+        </header>
+        <main>
+            <script type = "text/JavaScript"></script>
+            <noscript style = "color: red;"><b>⚠️ You need JavaScript enabled to use this application!</b></noscript>
+            <table id = "MainTable">
+            </table>
+            <br>
+            <button id = "PowerOnButton" onclick = "PowerOn ()">❓ No printers are online!</button>
+        </main>
+        <aside id = "LivePanel">
+            <span class = "LivePanelControls">
+                <button id = "BackButton" onclick = "CloseLivePanel ()">❌ Back</button>
+                <label><b>Camera Scale:</b></label>
+                <input type = "range" min = "40" max = "100" value = "100" id = "ScaleSlider" onchange = "UpdateCameraScale ()">
+            </span>
+            <div id = "CameraContainer">
+            </div>
+        </aside>
+        <footer>
+            <script type = "text/JavaScript">
+                document.write ("<p>Copyright " + new Date ().getFullYear () + " Longridge High School.</p>");
+            </script>
+            <noscript><p>Copyright 2025 Longridge High School.</p></noscript>
+        </footer>
+    </body>
+    <script type = "text/JavaScript" src = "/js/console.js"></script>
+    <script type = "text/JavaScript" src = "/js/livePanel.js"></script>
+    <script type = "text/JavaScript" src = "/js/cameras.js"></script>
+</html>

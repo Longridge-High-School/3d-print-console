@@ -1,18 +1,19 @@
-# 3D Print Console
+# * 3D Print Console Development Docker Compose File *
+#
+#   For production, use the sample in README.md
 
-**docker-compose.yaml:**
-```
 services:
   console:
-    image:
+    image: kugland/darkhttpd:latest
     volumes:
+      - "./console:/www"
       - "./data:/www/data:ro"
     ports:
       - "8000:80"
     restart: unless-stopped
 
   log:
-    image:
+    build: ./logs
     volumes:
       - "./data:/data"
     ports:
@@ -25,11 +26,10 @@ services:
           - ./data:/home/admin/data
       ports:
           - "22:22"
-      command: admin:YOUR_PASSWORD_HERE:::data
+      command: admin:password:::data
       restart: unless-stopped
 
   defaults:
-    image:
+    build: ./default
     volumes:
       - "./data:/data"
-```

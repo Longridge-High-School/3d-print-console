@@ -1,0 +1,41 @@
+/* "Small" Screen Mode */
+
+@media (max-width: 1640px)
+{
+    main
+    {
+        width: 100%;
+    }
+    
+    aside
+    {
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        margin: 0;
+        z-index: 10;
+        background-color: var(--smallScreenLiveColour);
+        visibility: hidden;
+    }
+
+    .LivePanelControls
+    {
+        position: absolute;
+        padding: 1px;
+        margin-top: 10px;
+        z-index: 15;
+        top: 0;
+        left: 0;
+    }
+
+    #CameraContainer
+    {
+        padding-top: 2em;
+    }
+
+    .LiveViewButton
+    {
+        visibility: visible;
+    }
+}

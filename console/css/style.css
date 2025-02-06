@@ -1,0 +1,125 @@
+:root
+{
+    --brandColour: #252d5c;
+    --smallScreenLiveColour: #586497EE;
+}
+
+body
+{
+    font-family: Calibri, sans-serif;
+    background-color: whitesmoke;
+    font-size: 1em;
+}
+
+header
+{
+    background-color: var(--brandColour);
+    color: white;
+    padding: 1em;
+    margin-bottom: 0.5em;
+    padding-bottom: 2em;
+    text-align: left;
+}
+
+.Logo
+{
+    float: left;
+    width: 100px;
+    padding-right: 30px;
+}
+
+main
+{
+    display: inline-block;
+    width: 60%;
+    text-align: left;
+}
+
+.JobStatus
+{
+    padding: 2px;
+    background-color: whitesmoke;
+}
+
+aside
+{
+    text-align: left;
+    vertical-align: top;
+    display: inline-block;
+    width: 39%;
+}
+
+.LivePanelControls
+{
+    margin-top: 0.1em;
+    padding: 0.4em;
+    background-color: whitesmoke;
+}
+
+#CameraContainer
+{
+    transform-origin: 50% 0%;
+}
+
+iframe
+{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+footer
+{
+    text-align: left;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--brandColour);
+    color: white;
+    padding: 0.1em;
+    padding-left: 1em;
+    left: 0;
+}
+
+tr
+{
+    width: 100%;
+}
+
+td
+{
+    padding: 10px;
+    vertical-align: top;
+}
+
+a
+{
+    color: black;
+    font-size: 0.75em;
+}
+
+button, input[type=file]
+{
+    margin: 5px;
+}
+
+label
+{
+    vertical-align: top;
+}
+
+.LiveViewButton
+{
+    float: right;
+    position: absolute;
+    right: 0.5em;
+    z-index: 5;
+    display: block;
+    visibility: hidden;
+    font-size: 1.3em;
+}
+
+#BackButton
+{
+    visibility: hidden;
+}
