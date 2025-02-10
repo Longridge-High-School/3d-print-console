@@ -4,7 +4,7 @@ EXPOSE 80
 
 ADD ./index.php /var/www/html/index.php
 RUN chmod +rw /var/www/html/index.php
-ADD ./htaccess /var/www/html/.htaccess
+RUN echo "Header set Access-Control-Allow-Origin \"*\"" >> /var/www/html/.htaccess
 RUN chmod +rw /var/www/html/.htaccess
 
 RUN mkdir /data
