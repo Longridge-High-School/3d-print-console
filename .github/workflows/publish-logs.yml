@@ -1,9 +1,9 @@
 name: Publish Logs Docker Image
 
 on:
-  push:
-    branches: ['main']
-
+  release:
+    types: [published]
+    
 jobs:
   push_to_registry:
     name: Push Logs Docker image to Docker Hub

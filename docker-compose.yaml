@@ -13,7 +13,9 @@ services:
     restart: unless-stopped
 
   log:
-    build: ./logs
+    build:
+      context: ./logs
+      dockerfile: local.Dockerfile
     volumes:
       - "./data:/data"
     ports:

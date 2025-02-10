@@ -81,6 +81,13 @@ footer
     left: 0;
 }
 
+footer a
+{
+    color: white;
+    font-size: 1em;
+    font-family: Calibri, sans-serif;
+}
+
 tr
 {
     width: 100%;
