@@ -41,12 +41,12 @@ Control all your OctoPrint 3D Printers in one place with 3D Print Console!
         volumes:
             - ./data:/home/admin/data
         ports:
-            - "22:22"
+            - "9022:22"
         command: admin:YOUR_PASSWORD_HERE:::data
         restart: unless-stopped
 
-    defaults: longridgehighschool/3d-print-console-defaults
-      image:
+    defaults: 
+      image: longridgehighschool/3d-print-console-defaults
       volumes:
         - "./data:/data"
   ```
