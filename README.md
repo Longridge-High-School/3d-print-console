@@ -21,7 +21,7 @@ Control all your OctoPrint 3D Printers in one place with 3D Print Console!
   ```
   services:
     console:
-      image:
+      image: longridgehighschool/3d-print-console
       volumes:
         - "./data:/www/data:ro"
       ports:
@@ -29,7 +29,7 @@ Control all your OctoPrint 3D Printers in one place with 3D Print Console!
       restart: unless-stopped
 
     log:
-      image:
+      image: longridgehighschool/3d-print-console-logs
       volumes:
         - "./data:/data"
       ports:
@@ -45,7 +45,7 @@ Control all your OctoPrint 3D Printers in one place with 3D Print Console!
         command: admin:YOUR_PASSWORD_HERE:::data
         restart: unless-stopped
 
-    defaults:
+    defaults: longridgehighschool/3d-print-console-defaults
       image:
       volumes:
         - "./data:/data"
