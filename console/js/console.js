@@ -64,7 +64,7 @@ async function CreateTable ()
                     }
 
                     row.innerHTML += `<td>
-                                        <input type = "file" accept = ".gcode" id = "file_` + printer.host + `" name = "file" onclick = "clearTimeout (timeOutID);">
+                                        <input type = "file" accept = "` + printer.file + `" id = "file_` + printer.host + `" name = "file" onclick = "clearTimeout (timeOutID);">
                                         <button onclick = "UploadFile (` + printer.id + `);">⬆️ Upload & Select File</button>
                                     </td>`;
                 }

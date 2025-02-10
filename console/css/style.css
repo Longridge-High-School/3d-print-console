@@ -90,6 +90,7 @@ td
 {
     padding: 10px;
     vertical-align: top;
+    min-width: 5em;
 }
 
 a
