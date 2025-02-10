@@ -2,7 +2,7 @@ FROM php:8.0-apache
 
 EXPOSE 80
 
-ADD ./index.php /var/www/html/index.php
+COPY ./index.php /var/www/html/index.php
 RUN chmod +rw /var/www/html/index.php
 RUN echo "Header set Access-Control-Allow-Origin \"*\"" >> /var/www/html/.htaccess
 RUN chmod +rw /var/www/html/.htaccess
