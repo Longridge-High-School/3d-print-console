@@ -1,9 +1,6 @@
 name: Publish Logs Docker Image
 
-on:
-  workflow_dispatch
-  release:
-    types: [published]
+on: workflow_dispatch
     
 jobs:
   push_to_registry:
