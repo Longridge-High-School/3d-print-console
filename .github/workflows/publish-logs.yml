@@ -1,8 +1,8 @@
 name: Publish Logs Docker Image
 
 on:
-  push:
-    branches: ['1-github-actions-fail']
+  release:
+    types: [published]
 
 jobs:
   push_to_registry:
