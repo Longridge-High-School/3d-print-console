@@ -54,12 +54,12 @@ async function CreateTable ()
                     }
                     else if (status == "Busy Printing")
                     {
-                        row += `<button onclick = 'Job (${printer.id}, "pause");'>⏯️ Pause</button><br>`;
+                        row += `<td><button onclick = 'Job (${printer.id}, "pause");'>⏯️ Pause</button><br>`;
                         row += `<button onclick = 'Job (${printer.id}, "cancel");'>❌ Cancel</button></td>`;
                     }
                     else
                     {
-                        row += `<div style = "vertical-align: center; text-align: center;">
+                        row += `<td><div style = "vertical-align: center; text-align: center;">
                                             <i>Please wait...</i>
                                         </div></td>`;
                     }
