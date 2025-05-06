@@ -48,7 +48,7 @@ async function CreateTable ()
                     }
                     else if (status == "Paused")
                     {
-                        row += `<button onclick = 'Job (${printer.id}, "pause");'>⏯️ Resume</button><br>`;
+                        row += `<td><button onclick = 'Job (${printer.id}, "pause");'>⏯️ Resume</button><br>`;
                         row += `<button onclick = 'Job (${printer.id}, "cancel");'>❌ Cancel</button><br>`;
                         row += `<button onclick = 'Job (${printer.id}, "restart");'>🔁 Restart</button></td>`;
                     }
