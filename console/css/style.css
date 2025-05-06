@@ -2,6 +2,7 @@
 {
     --brandColour: #252d5c;
     --smallScreenLiveColour: #586497EE;
+    --headerFooterTextColour: #FFFFFF;
 }
 
 body
@@ -14,11 +15,12 @@ body
 header
 {
     background-color: var(--brandColour);
-    color: white;
+    color: var(--headerFooterTextColour);
     padding: 1em;
     margin-bottom: 0.5em;
     padding-bottom: 2em;
     text-align: left;
+    border-radius: 10px;
 }
 
 .Logo
@@ -37,8 +39,19 @@ main
 
 .JobStatus
 {
-    padding: 2px;
+    padding: 4px;
     background-color: whitesmoke;
+    border-radius: 9px;
+}
+
+.LockedText
+{
+    text-align: center;
+    background-color: lightcoral;
+    border-radius: 9px;
+    padding: 3px;
+    padding-top: 1.25em;
+    padding-bottom: 1.25em;
 }
 
 aside
@@ -54,6 +67,7 @@ aside
     margin-top: 0.1em;
     padding: 0.4em;
     background-color: whitesmoke;
+    border-radius: 9px;
 }
 
 #CameraContainer
@@ -70,20 +84,19 @@ iframe
 
 footer
 {
-    text-align: left;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
     background-color: var(--brandColour);
-    color: white;
-    padding: 0.1em;
-    padding-left: 1em;
-    left: 0;
+    color: var(--headerFooterTextColour);
+    padding: 0.2em;
+    padding-left: 2em;
+    text-align: left;
+    border-radius: 10px;
+    position: sticky;
+    bottom: 0;
 }
 
 footer a
 {
-    color: white;
+    color: var(--headerFooterTextColour);
     font-size: 1em;
     font-family: Calibri, sans-serif;
 }
@@ -100,20 +113,44 @@ td
     min-width: 5em;
 }
 
+tr td:first-of-type
+{
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+tr td:last-of-type
+{
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
 a
 {
     color: black;
     font-size: 0.75em;
 }
 
-button, input[type=file]
+button, input[type=file]::file-selector-button
 {
     margin: 5px;
+    border-radius: 9px;
+    padding: 3px;
+    background-color: whitesmoke;
+    border: 1.5px solid rgb(230, 230, 230);
+    transition-duration: 0.4s;
 }
 
-label
+button:hover, input[type=file]::file-selector-button:hover
 {
-    vertical-align: top;
+    background-color: var(--brandColour);
+    color: white;
+    border: 1.5px solid var(--brandColour);
+}
+
+label, input[type=range]
+{
+    vertical-align: middle;
 }
 
 .LiveViewButton
@@ -130,4 +167,14 @@ label
 #BackButton
 {
     visibility: hidden;
+    background-color: lightgrey;
+    color: red;
+    border: 1.5px solid darkred;
+}
+
+#BackButton:hover
+{
+    background-color: var(--brandColour);
+    border: 1.5px solid var(--brandColour);
+    color: white;
 }

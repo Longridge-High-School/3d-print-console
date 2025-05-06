@@ -2,6 +2,7 @@
 <html lang = "en-gb">
     <head>
         <meta charset = "utf-8">
+        <meta http-equiv = "Cache-Control" content = "no-store, max-age=0"> <!-- Force page to reload all the JSON. -->
         <link rel = "stylesheet" href = "/css/style.css">
         <link rel = "icon" href = "/img/favicon.svg" sizes = "any" type = "image/svg+xml">
         <script type = "text/JavaScript" src = "/js/config.js"></script>
@@ -26,7 +27,7 @@
         </main>
         <aside id = "LivePanel">
             <span class = "LivePanelControls">
-                <button id = "BackButton" onclick = "CloseLivePanel ()">❌ Back</button>
+                <button id = "BackButton" onclick = "CloseLivePanel ()">❌</button>
                 <label><b>Camera Scale:</b></label>
                 <input type = "range" min = "40" max = "100" value = "100" id = "ScaleSlider" onchange = "UpdateCameraScale ()">
             </span>

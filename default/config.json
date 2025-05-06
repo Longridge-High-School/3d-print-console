@@ -1,5 +1,6 @@
 {
     "brandColour": "#252d5c",
     "smallScreenLiveColour": "#586497EE",
+    "headerFooterTextColour": "#FFFFFF",
     "logServer": "http://localhost:9000"
 }

@@ -1,4 +1,18 @@
-const timeOutID = setTimeout (function ()
+var timeOutID;
+var refreshCounter = 0;
+
+function SetRefresh ()
 {
-    window.location.reload (1);
-}, 10000);
+    timeOutID = setTimeout (function ()
+    {
+        if (refreshCounter === 5) // Refresh the page every 5 reloads.
+        {
+            location.reload (); // Refresh the page.
+        }
+        else
+        {
+            refreshCounter++;
+            CreateTable (); // Regenerate the table.
+        }
+    }, 10000);
+}

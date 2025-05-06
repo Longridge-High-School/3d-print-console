@@ -7,6 +7,7 @@ async function LoadConfig ()
 
     document.querySelector (":root").style.setProperty ("--brandColour", config.brandColour);
     document.querySelector (":root").style.setProperty ("--smallScreenLiveColour", config.smallScreenLiveColour);
+    document.querySelector (":root").style.setProperty ("--headerFooterTextColour", config.headerFooterTextColour);
 }
 
 var logServer;

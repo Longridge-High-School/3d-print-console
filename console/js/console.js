@@ -2,22 +2,23 @@ async function CreateTable ()
 {
     const response = await fetch ("/data/printers.json");
     printers = await response.json ();
+    let content = "";
 
     for (var printer of printers)
     {
         try
         {
             var status = await GetStatus (printer.host, printer.key);
+            let row = "";
 
-            row = mainTable.insertRow ();
-            row.innerHTML += "<td><h3>" + printer.name + "</h3><br><p><a href = '" + printer.host + "' target = '_blank'>Access Device</a></p></td>";
-            row.innerHTML += `<td>
+            row += `<td style = "text-align: center;"><h3>${printer.name}</h3><br><p><a href = "${printer.host}" target = "_blank">Access Device</a></p></td>`;
+            row += `<td>
                                     <b>Status:</b>
                                     <br>` + status + `<br><br>
                                     ` + await GetJobStatus (printer.host, printer.key) + `
                                 </td>`;
-            row.innerHTML += "<td><b>Current File:</b><br>" + await GetCurrentFile (printer.host, printer.key) + "</td>";
-            row.innerHTML += `<td>
+            row += "<td><b>Current File:</b><br>" + await GetCurrentFile (printer.host, printer.key) + "</td>";
+            row += `<td>
                                 <b>Filament Colour:</b><br>
                                 <svg width = "30" height = "30" xmlns = "http://www.w3.org/2000/svg">
                                     <pattern id = "pattern-checkers" x = "0" y = "0" width = "10" height = "10" patternUnits = "userSpaceOnUse">
@@ -34,7 +35,7 @@ async function CreateTable ()
             {
                 if (!CheckKioskMode ())
                 {
-                    row.innerHTML += `<td><button>🔒 Printer Locked</button></td><td></td>`;
+                    row += `<td colspan = 2><div class = "LockedText">🔒 Printer Locked</div></td>`;
                 }
             }
             else
@@ -43,34 +44,35 @@ async function CreateTable ()
                 {
                     if (status == "Ready to Print")
                     {
-                        row.innerHTML += `<td><button onclick = 'Job (${printer.id}, "start");'>✅ Start Printing</button></td>`;
+                        row += `<td><button onclick = 'Job (${printer.id}, "start");'>✅ Start Printing</button></td>`;
                     }
                     else if (status == "Paused")
                     {
-                        row.innerHTML += `<button onclick = 'Job (${printer.id}, "pause");'>⏯️ Resume</button><br>`;
-                        row.innerHTML += `<button onclick = 'Job (${printer.id}, "cancel");'>❌ Cancel</button><br>`;
-                        row.innerHTML += `<button onclick = 'Job (${printer.id}, "restart");'>🔁 Restart</button></td>`;
+                        row += `<button onclick = 'Job (${printer.id}, "pause");'>⏯️ Resume</button><br>`;
+                        row += `<button onclick = 'Job (${printer.id}, "cancel");'>❌ Cancel</button><br>`;
+                        row += `<button onclick = 'Job (${printer.id}, "restart");'>🔁 Restart</button></td>`;
                     }
                     else if (status == "Busy Printing")
                     {
-                        row.innerHTML += `<button onclick = 'Job (${printer.id}, "pause");'>⏯️ Pause</button><br>`;
-                        row.innerHTML += `<button onclick = 'Job (${printer.id}, "cancel");'>❌ Cancel</button></td>`;
+                        row += `<button onclick = 'Job (${printer.id}, "pause");'>⏯️ Pause</button><br>`;
+                        row += `<button onclick = 'Job (${printer.id}, "cancel");'>❌ Cancel</button></td>`;
                     }
                     else
                     {
-                        row.innerHTML += `<div style = "vertical-align: center; text-align: center;">
+                        row += `<div style = "vertical-align: center; text-align: center;">
                                             <i>Please wait...</i>
                                         </div></td>`;
                     }
 
-                    row.innerHTML += `<td>
+                    row += `<td>
                                         <input type = "file" accept = "` + printer.file + `" id = "file_` + printer.host + `" name = "file" onclick = "clearTimeout (timeOutID);">
+                                        <br>
                                         <button onclick = "UploadFile (` + printer.id + `);">⬆️ Upload & Select File</button>
                                     </td>`;
                 }
             }
 
-            row.style.backgroundColor = printer.background;
+            content += `<tr style = "background-color: ${printer.background}">${row}</tr>`;
 
             document.getElementById ("PowerOnButton").style.display = "none";
         }
@@ -99,6 +101,10 @@ async function CreateTable ()
             }
         }
     }
+
+    mainTable.innerHTML = content; // Write new table.
+    
+    SetRefresh (); // Reload data in 10 seconds.
 }
 
 async function GetStatus (host, key)
@@ -242,7 +248,7 @@ async function Job (id, command)
     host = printers [id].host;
     key = printers [id].key;
 
-    await WriteLog ("Ran command '" + command + "' on " + printers [id].name + ".");
+    await WriteLog (`Ran command "${command}" on ${printers [id].name}.`);
 
     const options =
     {
