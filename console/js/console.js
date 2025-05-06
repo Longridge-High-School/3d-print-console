@@ -23,7 +23,7 @@ async function CreateTable ()
                                 <svg width = "30" height = "30" xmlns = "http://www.w3.org/2000/svg">
                                     <pattern id = "pattern-checkers" x = "0" y = "0" width = "10" height = "10" patternUnits = "userSpaceOnUse">
                                         <rect fill = "grey" x = "0" width = "5" height = "5" y = "0"></rect>
-                                        <rect fill = "white" x ="5" width = "5" height = "5" y = "0"></rect>
+                                        <rect fill = "white" x = "5" width = "5" height = "5" y = "0"></rect>
                                         <rect fill = "white" x = "0" width = "5" height = "5" y = "5"></rect>
                                         <rect fill = "grey" x = "5" width = "5" height = "5" y = "5"></rect>
                                     </pattern>
