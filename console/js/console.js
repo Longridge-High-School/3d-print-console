@@ -8,98 +8,110 @@ async function CreateTable ()
     {
         try
         {
-            var status = await GetStatus (printer.host, printer.key);
+            const status = await GetStatus (printer.host, printer.key);
             let row = "";
 
-            row += `<td style = "text-align: center;"><h3>${printer.name}</h3><br><p><a href = "${printer.host}" target = "_blank">Access Device</a></p></td>`;
-            row += `<td>
-                                    <b>Status:</b>
-                                    <br>` + status + `<br><br>
-                                    ` + await GetJobStatus (printer.host, printer.key) + `
-                                </td>`;
-            row += "<td><b>Current File:</b><br>" + await GetCurrentFile (printer.host, printer.key) + "</td>";
-            row += `<td>
-                                <b>Filament Colour:</b><br>
-                                <svg width = "30" height = "30" xmlns = "http://www.w3.org/2000/svg">
-                                    <pattern id = "pattern-checkers" x = "0" y = "0" width = "10" height = "10" patternUnits = "userSpaceOnUse">
-                                        <rect fill = "grey" x = "0" width = "5" height = "5" y = "0"></rect>
-                                        <rect fill = "white" x = "5" width = "5" height = "5" y = "0"></rect>
-                                        <rect fill = "white" x = "0" width = "5" height = "5" y = "5"></rect>
-                                        <rect fill = "grey" x = "5" width = "5" height = "5" y = "5"></rect>
-                                    </pattern>
-                                    <circle cx = "15" cy = "15" r = "10" stroke = "black" stroke-width = "2" fill = "url(#pattern-checkers)" />
-                                    <circle cx = "15" cy = "15" r = "10" stroke = "black" stroke-width = "2" fill = "${printer.filament}" />
-                                </svg>
-                            </td>`;
-            if (printer.locked)
+            if (status == "Network Error")
             {
-                if (!CheckKioskMode ())
-                {
-                    row += `<td colspan = 2><div class = "LockedText">🔒 Printer Locked</div></td>`;
-                }
-            }
-            else
-            {
-                if (!CheckKioskMode ())
-                {
-                    if (status == "Ready to Print")
-                    {
-                        row += `<td><button onclick = 'Job (${printer.id}, "start");'>✅ Start Printing</button></td>`;
-                    }
-                    else if (status == "Paused")
-                    {
-                        row += `<td><button onclick = 'Job (${printer.id}, "pause");'>⏯️ Resume</button><br>`;
-                        row += `<button onclick = 'Job (${printer.id}, "cancel");'>❌ Cancel</button><br>`;
-                        row += `<button onclick = 'Job (${printer.id}, "restart");'>🔁 Restart</button></td>`;
-                    }
-                    else if (status == "Busy Printing")
-                    {
-                        row += `<td><button onclick = 'Job (${printer.id}, "pause");'>⏯️ Pause</button><br>`;
-                        row += `<button onclick = 'Job (${printer.id}, "cancel");'>❌ Cancel</button></td>`;
-                    }
-                    else
-                    {
-                        row += `<td><div style = "vertical-align: center; text-align: center;">
-                                    <div class = "loader"></div>
-                                    <p><i>Please wait...</i></p>
-                                </div></td>`;
-                    }
-
-                    row += `<td>
-                                        <input type = "file" accept = "` + printer.file + `" id = "file_` + printer.host + `" name = "file" onclick = "clearTimeout (timeOutID);">
-                                        <br>
-                                        <button onclick = "UploadFile (` + printer.id + `);">⬆️ Upload & Select File</button>
-                                    </td>`;
-                }
-            }
-
-            content += `<tr style = "background-color: ${printer.background}">${row}</tr>`;
-
-            document.getElementById ("PowerOnButton").style.display = "none";
-        }
-        catch (error)
-        {
-            try
-            {
-                row = mainTable.insertRow ();
-                row.innerHTML += "<td><h3>" + printer.name + "</h3><br><p><a href = '" + printer.host + "' target = '_blank'>Access Device</a></p></td>";
-                row.innerHTML += "<td><b>Status:</b><br>⚠️ Offline<br><br></td>";
+                row += "<td><h3>" + printer.name + "</h3><br><p><a href = '" + printer.host + "' target = '_blank'>Access Device</a></p></td>";
+                row += "<td><b>Status:</b><br>⚠️ Network Error!<br><br></td>";
 
                 if (!CheckKioskMode ())
                 {
-                    row.innerHTML += "<td colspan = 4></td>";
+                    row += "<td colspan = 4></td>";
                 }
                 else
                 {
-                    row.innerHTML += "<td colspan = 3></td>";
+                    row += "<td colspan = 3></td>";
                 }
 
-                row.style.backgroundColor = printer.background;
+                content += `<tr style = "background-color: ${printer.background}">${row}</tr>`;
             }
-            catch (error)
+            else
             {
-                continue; // Skip if not working
+                row += `<td style = "text-align: center;"><h3>${printer.name}</h3><br><p><a href = "${printer.host}" target = "_blank">Access Device</a></p></td>`;
+                row += `<td>
+                                        <b>Status:</b>
+                                        <br>` + status + `<br><br>
+                                        ` + await GetJobStatus (printer.host, printer.key) + `
+                                    </td>`;
+                row += "<td><b>Current File:</b><br>" + await GetCurrentFile (printer.host, printer.key) + "</td>";
+                row += `<td>
+                                    <b>Filament Colour:</b><br>
+                                    <svg width = "30" height = "30" xmlns = "http://www.w3.org/2000/svg">
+                                        <pattern id = "pattern-checkers" x = "0" y = "0" width = "10" height = "10" patternUnits = "userSpaceOnUse">
+                                            <rect fill = "grey" x = "0" width = "5" height = "5" y = "0"></rect>
+                                            <rect fill = "white" x = "5" width = "5" height = "5" y = "0"></rect>
+                                            <rect fill = "white" x = "0" width = "5" height = "5" y = "5"></rect>
+                                            <rect fill = "grey" x = "5" width = "5" height = "5" y = "5"></rect>
+                                        </pattern>
+                                        <circle cx = "15" cy = "15" r = "10" stroke = "black" stroke-width = "2" fill = "url(#pattern-checkers)" />
+                                        <circle cx = "15" cy = "15" r = "10" stroke = "black" stroke-width = "2" fill = "${printer.filament}" />
+                                    </svg>
+                                </td>`;
+                if (printer.locked)
+                {
+                    if (!CheckKioskMode ())
+                    {
+                        row += `<td colspan = 2><div class = "LockedText">🔒 Printer Locked</div></td>`;
+                    }
+                }
+                else
+                {
+                    if (!CheckKioskMode ())
+                    {
+                        if (status == "Ready to Print")
+                        {
+                            row += `<td><button onclick = 'Job (${printer.id}, "start");'>✅ Start Printing</button></td>`;
+                        }
+                        else if (status == "Paused")
+                        {
+                            row += `<td><button onclick = 'Job (${printer.id}, "pause");'>⏯️ Resume</button><br>`;
+                            row += `<button onclick = 'Job (${printer.id}, "cancel");'>❌ Cancel</button><br>`;
+                            row += `<button onclick = 'Job (${printer.id}, "restart");'>🔁 Restart</button></td>`;
+                        }
+                        else if (status == "Busy Printing")
+                        {
+                            row += `<td><button onclick = 'Job (${printer.id}, "pause");'>⏯️ Pause</button><br>`;
+                            row += `<button onclick = 'Job (${printer.id}, "cancel");'>❌ Cancel</button></td>`;
+                        }
+                        else
+                        {
+                            row += `<td><div style = "vertical-align: center; text-align: center;">
+                                        <div class = "loader"></div>
+                                        <p><i>Please wait...</i></p>
+                                    </div></td>`;
+                        }
+
+                        row += `<td>
+                                            <input type = "file" accept = "` + printer.file + `" id = "file_` + printer.host + `" name = "file" onclick = "clearTimeout (timeOutID);">
+                                            <br>
+                                            <button onclick = "UploadFile (` + printer.id + `);">⬆️ Upload & Select File</button>
+                                        </td>`;
+                    }
+                }
+
+                content += `<tr style = "background-color: ${printer.background}">${row}</tr>`;
+
+                document.getElementById ("PowerOnButton").style.display = "none";
             }
+        }
+        catch (error)
+        {
+            row = mainTable.insertRow ();
+            row.innerHTML += "<td><h3>" + printer.name + "</h3><br><p><a href = '" + printer.host + "' target = '_blank'>Access Device</a></p></td>";
+            row.innerHTML += "<td><b>Status:</b><br>⚠️ Offline<br><br></td>";
+
+            if (!CheckKioskMode ())
+            {
+                row.innerHTML += "<td colspan = 4></td>";
+            }
+            else
+            {
+                row.innerHTML += "<td colspan = 3></td>";
+            }
+
+            row.style.backgroundColor = printer.background;
         }
     }
 
@@ -116,8 +128,15 @@ async function GetStatus (host, key)
         headers: new Headers ({"X-Api-Key": key}),
     };
 
-    const response = await fetch (host + "/api/printer?exclude=temperature,sd", options);
-    data = await response.json ();
+    try
+    {
+        const response = await fetch (host + "/api/printer?exclude=temperature,sd", options);
+        data = await response.json ();
+    }
+    catch
+    {
+        return "Network Error".toString ();
+    }
 
     if (data.state.flags.error == "true")
     {
@@ -165,8 +184,15 @@ async function GetJobStatus (host, key)
         headers: new Headers ({"X-Api-Key": key}),
     };
 
-    const response = await fetch (host + "/api/job", options);
-    data = await response.json ();
+    try
+    {
+        const response = await fetch (host + "/api/job", options);
+        data = await response.json ();
+    }
+    catch
+    {
+        return "Network Error!";
+    }
 
     var completion = data.progress.completion;
     var printTime = data.progress.printTime;
@@ -231,8 +257,15 @@ async function GetCurrentFile (host, key)
         headers: new Headers ({"X-Api-Key": key}),
     };
 
-    const response = await fetch (host + "/api/job", options);
-    data = await response.json ();
+    try
+    {
+        const response = await fetch (host + "/api/job", options);
+        data = await response.json ();
+    }
+    catch
+    {
+        return "Network Error!";
+    }
 
     if (data.job.file.name === null)
     {

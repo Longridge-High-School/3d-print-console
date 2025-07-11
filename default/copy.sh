@@ -17,3 +17,9 @@ then
     cp /defaults/config.json /data/config.json
     chmod 776 /data/config.json
 fi
+
+if [ ! -f  "/data/log.txt" ];
+then
+    touch /data/log.txt
+    chmod 776 /data/log.txt
+fi

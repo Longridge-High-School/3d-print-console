@@ -80,7 +80,7 @@ aside
     transform-origin: 50% 0%;
 }
 
-iframe
+iframe, .CameraError
 {
     margin-left: auto;
     margin-right: auto;
