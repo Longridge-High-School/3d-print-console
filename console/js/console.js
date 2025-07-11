@@ -60,8 +60,9 @@ async function CreateTable ()
                     else
                     {
                         row += `<td><div style = "vertical-align: center; text-align: center;">
-                                            <i>Please wait...</i>
-                                        </div></td>`;
+                                    <div class = "loader"></div>
+                                    <p><i>Please wait...</i></p>
+                                </div></td>`;
                     }
 
                     row += `<td>

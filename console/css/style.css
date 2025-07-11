@@ -21,6 +21,10 @@ header
     padding-bottom: 2em;
     text-align: left;
     border-radius: 10px;
+    position: static;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .Logo
@@ -35,6 +39,7 @@ main
     display: inline-block;
     width: 60%;
     text-align: left;
+    margin-bottom: 45px;
 }
 
 .JobStatus
@@ -180,3 +185,18 @@ label, input[type=range]
     border: 1.5px solid var(--brandColour);
     color: white;
 }
+
+/* css-loaders.com Loader */
+
+.loader
+{
+    width: 30px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 7px solid;
+    border-color: var(--brandColour) #FFFFFF00;
+    animation: l1 1s infinite;
+    margin: auto;
+    margin-bottom: 0.5em;
+}
+@keyframes l1 {to{transform: rotate(.5turn)}}
