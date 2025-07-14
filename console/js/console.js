@@ -13,7 +13,7 @@ async function CreateTable ()
 
             if (status == "Network Error")
             {
-                row += "<td><h3>" + printer.name + "</h3><br><p><a href = '" + printer.host + "' target = '_blank'>Access Device</a></p></td>";
+                row += "<td style = 'text-align: center;'><h3>" + printer.name + "</h3><br><p><a href = '" + printer.host + "' target = '_blank'>Access Device</a></p></td>";
                 row += "<td><b>Status:</b><br>⚠️ Network Error!<br><br></td>";
 
                 if (!CheckKioskMode ())
