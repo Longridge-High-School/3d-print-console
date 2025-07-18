@@ -12,6 +12,12 @@ then
     chmod 776 /data/cameras.json
 fi
 
+if [ ! -f  "/data/widgets.json" ];
+then
+    cp /defaults/widgets.json /data/widgets.json
+    chmod 776 /data/widgets.json
+fi
+
 if [ ! -f  "/data/config.json" ];
 then
     cp /defaults/config.json /data/config.json
@@ -23,3 +29,6 @@ then
     touch /data/log.txt
     chmod 776 /data/log.txt
 fi
+
+mkdir /data/widgets
+chmod -R 776 /data/widgets

@@ -67,7 +67,7 @@ aside
     width: 39%;
 }
 
-.LivePanelControls
+#LivePanelControls
 {
     margin-top: 0.1em;
     padding: 0.4em;
@@ -75,16 +75,22 @@ aside
     border-radius: 9px;
 }
 
-#CameraContainer
+.Widget
 {
-    transform-origin: 50% 0%;
+    padding: 10px;
 }
 
-iframe, .CameraError
+#WidgetContainer
 {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+iframe
+{
+    border-radius: 9px;
 }
 
 footer
@@ -93,6 +99,8 @@ footer
     color: var(--headerFooterTextColour);
     padding: 0.2em;
     padding-left: 2em;
+    margin-left: 5px;
+    margin-right: 5px;
     text-align: left;
     border-radius: 10px;
     position: fixed;
