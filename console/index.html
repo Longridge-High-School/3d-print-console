@@ -13,7 +13,7 @@
     </head>
     <body>
         <header>
-            <button class = "LiveViewButton" onclick = "OpenLivePanel ()">📺 Live View</button>
+            <button class = "LiveViewButton" onclick = "OpenLivePanel ()">📺 Cameras & Widgets</button>
             <img src = "/img/favicon.svg" class = "Logo"></img>
             <h1>3D Printer Console</h1>
         </header>
@@ -26,12 +26,15 @@
             <button id = "PowerOnButton" onclick = "PowerOn ()">❓ No printers are online!</button>
         </main>
         <aside id = "LivePanel">
-            <span class = "LivePanelControls">
+            <span id = "LivePanelControls">
                 <button id = "BackButton" onclick = "CloseLivePanel ()">❌</button>
-                <label><b>Camera Scale:</b></label>
-                <input type = "range" min = "40" max = "100" value = "100" id = "ScaleSlider" onchange = "UpdateCameraScale ()">
+                <b>Widget Size:</b>
+                <button onclick = "SetWidgetSize ('Small')">Small</button>
+                <button onclick = "SetWidgetSize ('Medium')">Medium</button>
+                <button onclick = "SetWidgetSize ('Large')">Large</button>
             </span>
-            <div id = "CameraContainer">
+            <div id = "WidgetContainer">
+                <!-- Widgets (& Cameras) go here. -->
             </div>
         </aside>
         <footer>
@@ -44,5 +47,5 @@
     </body>
     <script type = "text/JavaScript" src = "/js/console.js"></script>
     <script type = "text/JavaScript" src = "/js/livePanel.js"></script>
-    <script type = "text/JavaScript" src = "/js/cameras.js"></script>
+    <script type = "text/JavaScript" src = "/js/widgets.js"></script>
 </html>
