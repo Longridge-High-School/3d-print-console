@@ -18,9 +18,11 @@ async function AddWidgetsFromFile ()
 
     for (var camera of cameras)
     {
-        if (CheckValidURL (camera.url))
+        if (await CheckValidURL (camera.url))
         {
-            container.innerHTML += `<div class = "Widget"><iframe src = "${camera.url}" title = "${camera.title}" allowfullscreen = "" frameborder = "0" width = "${widgetWidth}" height = "${widgetHeight}"></iframe></div>`;
+            container.innerHTML += `<div class = "Widget">
+                                        <img src = "${camera.url}" alt = "${camera.title}" width = "${widgetWidth}" height = "${widgetHeight}" class = "Camera" onerror = "ReplaceBrokenCameraImage (this);"></img>
+                                    </div>`;
         }
         else
         {
@@ -35,7 +37,7 @@ async function AddWidgetsFromFile ()
     {
         if (widget.enabled === "true")
         {
-            if (CheckValidURL ("/data/widgets" + widget.url))
+            if (await CheckValidURL ("/data/widgets" + widget.url))
             {
                 container.innerHTML += `<div class = "Widget"><iframe src = "/data/widgets${widget.url}?${widget.args}" title = "${widget.title}" allowfullscreen = "" frameborder = "0" width = "${widgetWidth}" height = "${widgetHeight}"></iframe></div>`;
             }
@@ -47,21 +49,37 @@ async function AddWidgetsFromFile ()
     }
 }
 
-function CheckValidURL (url)
+async function CheckValidURL (url)
 {
+    url = url.split ("?") [0]; // Remove any parameters from the URL.
+
+    const options =
+    {
+        mode: "no-cors",
+    };
+
     try
     {
-        const request = new XMLHttpRequest ();
-        request.open ("GET", url, false);
-        request.send (null);
+        const response = await fetch (url, options);
 
-        if (request.status === 200)
+        if (response.status === 404)
         {
-            return true;
+            console.log ("404 - " + url);
+            return false;
+        }
+        else if (response.status === 502)
+        {
+            console.log ("502 - " + url);
+            return false;
+        }
+        else if (response.status === 403)
+        {
+            console.log ("403 - " + url);
+            return false;
         }
         else
         {
-            return false;
+            return true;
         }
     }
     catch
@@ -93,4 +111,11 @@ function SetWidgetSize (size)
     container.innerHTML = "";
     AddWidgetsFromFile ();
     localStorage.setItem ("WidgetSize", size);
+}
+
+function ReplaceBrokenCameraImage (img)
+{
+    img.onerror = "";
+    img.src = "/img/no_camera.png";
+    return true;
 }
