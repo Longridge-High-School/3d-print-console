@@ -1,3 +1,6 @@
 [
-    {"url": "LIVESTREAM URL HERE", "title": "3D Printer Camera"}
+    {
+        "url": "LIVESTREAM URL HERE",
+        "title": "3D Printer Camera"
+    }
 ]

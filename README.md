@@ -1,6 +1,6 @@
 # 3D Print Console
 
-Control all your OctoPrint 3D Printers in one place with 3D Print Console!
+Control all your OctoPrint (or Moonraker using ```[octoprint_compat]```) 3D Printers in one place with 3D Print Console!
 
 ## Features of 3D Print Console
 
@@ -9,6 +9,7 @@ Control all your OctoPrint 3D Printers in one place with 3D Print Console!
 - Print jobs are logged, including which device sent them.
 - Controls can be disabled for a non-intearctable display.
 - Printers can be locked by the admin(s) for important jobs.
+- Widget support.
  
 ## Getting Started
 
@@ -60,7 +61,17 @@ Control all your OctoPrint 3D Printers in one place with 3D Print Console!
 11. Open the ```data``` directory, and then open ```printers.json```. It should look something like this:
 ```
 [
-    {"id": "0", "name": "Sample Printer", "host": "OCTOPRINT URL HERE", "filament": "rgb(12, 246, 0)", "key": "OCTOPRINT KEY HERE", "background": "DeepSkyBlue", "port": "/dev/ttyUSB0", "file": ".gcode", "locked": false}
+    {
+      "id": "0",
+      "name": "Sample Printer",
+      "host": "OCTOPRINT URL HERE",
+      "filament": "rgb(12, 246, 0)",
+      "key": "OCTOPRINT KEY HERE",
+      "background": "DeepSkyBlue",
+      "port": "/dev/ttyUSB0",
+      "file": ".gcode",
+      "locked": false
+    }
 ]
 ```
 12. Replace "Sample Printer" with a more fitting name.
