@@ -29,7 +29,14 @@ async function CreateTable ()
             }
             else
             {
-                row += `<td style = "text-align: center;"><h3>${printer.name}</h3><br><p><a href = "${printer.host}" target = "_blank">Access Device</a></p></td>`;
+                var managementURL = printer.host;
+
+                if (printer.managementURL != null)
+                {
+                    managementURL = printer.managementURL;
+                }
+
+                row += `<td style = "text-align: center;"><h3>${printer.name}</h3><br><p><a href = "${managementURL}" target = "_blank">Access Device</a></p></td>`;
                 row += `<td>
                                         <b>Status:</b>
                                         <br>` + status + `<br><br>
