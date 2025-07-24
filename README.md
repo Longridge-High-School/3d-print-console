@@ -1,6 +1,6 @@
 # 3D Print Console
 
-Control all your OctoPrint (or Moonraker using ```[octoprint_compat]```) 3D Printers in one place with 3D Print Console!
+Control all your OctoPrint 3D Printers in one place with 3D Print Console!
 
 ## Features of 3D Print Console
 
