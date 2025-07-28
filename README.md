@@ -1,6 +1,6 @@
 # 3D Print Console
 
-Control all your OctoPrint (or Moonraker using ```[octoprint_compat]```) 3D Printers in one place with 3D Print Console!
+Control all your OctoPrint 3D Printers in one place with 3D Print Console!
 
 ## Features of 3D Print Console
 
@@ -10,6 +10,7 @@ Control all your OctoPrint (or Moonraker using ```[octoprint_compat]```) 3D Prin
 - Controls can be disabled for a non-intearctable display.
 - Printers can be locked by the admin(s) for important jobs.
 - Widget support.
+- Compatible with [OctoKlipper](https://plugins.octoprint.org/plugins/klipper/).
  
 ## Getting Started
 
@@ -79,7 +80,7 @@ Control all your OctoPrint (or Moonraker using ```[octoprint_compat]```) 3D Prin
 14. Set the ```filament``` value to a [HTML colour name](https://www.w3schools.com/TAGS/ref_colornames.asp) or an RGB value for your current filament colour. You can use RGBA for transparent filament.
 15. Copy the API key you created in Step 1 into the ```key``` value.
 16. Set the ```background``` value to any colour you like in the same way as in Step 14.
-17. Set the ```port``` value to the USB port **on the OctoPrint server** that your printer is connected to. This will be something like "/dev/ttyUSB0" or "COM3".
+17. Set the ```port``` value to the USB port **on the OctoPrint server** that your printer is connected to. This will be something like "/dev/ttyUSB0, "COM3" or "/tmp/printer" if you use OctoKlipper.
 18. Set the ```file``` value to match the extension your 3D printer expects. The default is ".gcode". **Make sure to include the "."!**
 19. Save your changes.
 20. Open ```cameras.json```.
