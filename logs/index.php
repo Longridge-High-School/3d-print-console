@@ -4,7 +4,7 @@
     {
         $time = date ("Y/m/d H:i:s");
         $ip = htmlspecialchars ($_SERVER ["HTTP_X_FORWARDED_FOR"]); // Work around proxy. Ideally, this should be $_SERVER ["REMOTE_ADDR"].
-        $entry = htmlspecialchars ($_POST ["entry"]);
+        $entry = $_POST ["entry"];
         
         $file = fopen ("/data/log.txt", "a");
         fwrite ($file, $time . " - " . $ip . ' - ' . $entry . "\n");

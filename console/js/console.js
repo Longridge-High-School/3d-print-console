@@ -293,7 +293,7 @@ async function Job (id, command)
     host = printers [id].host;
     key = printers [id].key;
 
-    await WriteLog ('Ran command "' + command + '" on ' + printers [id].name + '.');
+    await WriteLog (`Ran command "${command}" on ${printers [id].name}.`);
 
     const options =
     {

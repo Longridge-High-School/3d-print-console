@@ -14,7 +14,7 @@ else
 async function AddWidgetsFromFile ()
 {
     const response1 = await fetch ("/data/cameras.json"); // Prioritise Cameras.
-    cameras = await response1.json ();
+    var cameras = await response1.json ();
 
     for (var camera of cameras)
     {
@@ -31,7 +31,7 @@ async function AddWidgetsFromFile ()
     }
 
     const response2 = await fetch ("/data/widgets.json");
-    widgets = await response2.json ();
+    var widgets = await response2.json ();
 
     for (var widget of widgets)
     {
