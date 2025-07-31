@@ -13,7 +13,14 @@ async function CreateTable ()
 
             if (status == "Network Error")
             {
-                row += "<td style = 'text-align: center;'><h3>" + printer.name + "</h3><br><p><a href = '" + printer.host + "' target = '_blank'>Access Device</a></p></td>";
+                var managementURL = printer.host;
+
+                if (printer.managementURL != null)
+                {
+                    managementURL = printer.managementURL;
+                }
+
+                row += "<td style = 'text-align: center;'><h3>" + printer.name + "</h3><br><p><a href = '" + managementURL + "' target = '_blank'>Access Device</a></p></td>";
                 row += "<td><b>Status:</b><br>⚠️ Network Error!<br><br></td>";
 
                 if (!CheckKioskMode ())
@@ -29,7 +36,14 @@ async function CreateTable ()
             }
             else
             {
-                row += `<td style = "text-align: center;"><h3>${printer.name}</h3><br><p><a href = "${printer.host}" target = "_blank">Access Device</a></p></td>`;
+                var managementURL = printer.host;
+
+                if (printer.managementURL != null)
+                {
+                    managementURL = printer.managementURL;
+                }
+
+                row += `<td style = "text-align: center;"><h3>${printer.name}</h3><br><p><a href = "${managementURL}" target = "_blank">Access Device</a></p></td>`;
                 row += `<td>
                                         <b>Status:</b>
                                         <br>` + status + `<br><br>
@@ -92,26 +106,24 @@ async function CreateTable ()
                 }
 
                 content += `<tr style = "background-color: ${printer.background}">${row}</tr>`;
-
-                document.getElementById ("PowerOnButton").style.display = "none";
             }
         }
         catch (error)
         {
-            row = mainTable.insertRow ();
-            row.innerHTML += "<td><h3>" + printer.name + "</h3><br><p><a href = '" + printer.host + "' target = '_blank'>Access Device</a></p></td>";
-            row.innerHTML += "<td><b>Status:</b><br>⚠️ Offline<br><br></td>";
+            let row = "";
+            row += "<td style = 'text-align: center;'><h3>" + printer.name + "</h3><br><p><a href = '" + printer.host + "' target = '_blank'>Access Device</a></p></td>";
+            row += `<td><b>Status:</b><br>⚠️ Offline<br><br><button onclick = "Connect ('${printer.host}', '${printer.key}', '${printer.port}');">Attempt to Reconnect</button></td>`;
 
             if (!CheckKioskMode ())
             {
-                row.innerHTML += "<td colspan = 4></td>";
+                row += "<td colspan = 4></td>";
             }
             else
             {
-                row.innerHTML += "<td colspan = 3></td>";
+                row += "<td colspan = 3></td>";
             }
 
-            row.style.backgroundColor = printer.background;
+            content += `<tr style = "background-color: ${printer.background}">${row}</tr>`;
         }
     }
 
@@ -243,7 +255,6 @@ async function UploadFile (id)
         };
 
         const response = await fetch (host + "/api/files/local", options);
-        data = await response.json ();
 
         location.reload ();
     }
@@ -282,7 +293,7 @@ async function Job (id, command)
     host = printers [id].host;
     key = printers [id].key;
 
-    await WriteLog ('Ran command "' + command + '" on ' + printers [id].name + '.');
+    await WriteLog (`Ran command "${command}" on ${printers [id].name}.`);
 
     const options =
     {
@@ -310,8 +321,6 @@ async function WriteLog (message)
     };
 
     const response = await fetch (logServer, options);
-
-    console.log (response);
 }
 
 var printers;

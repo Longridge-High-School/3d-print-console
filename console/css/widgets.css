@@ -20,3 +20,55 @@ body
         font-size: 0.5em;
     }
 }
+
+tr
+{
+    width: 100%;
+}
+
+td
+{
+    padding: 10px;
+    vertical-align: top;
+    min-width: 5em;
+}
+
+tr td:first-of-type
+{
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+tr td:last-of-type
+{
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+a
+{
+    color: black;
+    font-size: 0.75em;
+}
+
+button, input[type=file]::file-selector-button
+{
+    margin: 5px;
+    border-radius: 9px;
+    padding: 3px;
+    background-color: whitesmoke;
+    border: 1.5px solid rgb(230, 230, 230);
+    transition-duration: 0.4s;
+}
+
+button:hover, input[type=file]::file-selector-button:hover
+{
+    background-color: var(--brandColour);
+    color: white;
+    border: 1.5px solid var(--brandColour);
+}
+
+label, input[type=range]
+{
+    vertical-align: middle;
+}
