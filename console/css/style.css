@@ -65,6 +65,7 @@ aside
     vertical-align: top;
     display: inline-block;
     width: 39%;
+    padding-bottom: 3em;
 }
 
 #LivePanelControls
