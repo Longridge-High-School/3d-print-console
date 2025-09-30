@@ -98,7 +98,7 @@ async function CreateTable ()
                         }
 
                         row += `<td>
-                                            <input type = "file" accept = "` + printer.file + `" id = "file_` + printer.host + `" name = "file" onclick = "clearTimeout (timeOutID);">
+                                            <input type = "file" accept = "` + printer.file + `" id = "file_` + printer.host + `" name = "file" onclick = "ClearRefresh ();">
                                             <br>
                                             <button onclick = "UploadFile (` + printer.id + `);">⬆️ Upload & Select File</button>
                                         </td>`;
@@ -234,6 +234,8 @@ async function GetJobStatus (host, key)
 
 async function UploadFile (id)
 {
+    ClearRefresh (); // Stop console from reloading mid-upload.
+
     host = printers [id].host;
     key = printers [id].key;
 

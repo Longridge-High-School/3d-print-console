@@ -16,3 +16,8 @@ function SetRefresh ()
         }
     }, 10000);
 }
+
+function ClearRefresh ()
+{
+    clearTimeout (timeOutID);
+}
