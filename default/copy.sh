@@ -24,10 +24,10 @@ then
     chmod 776 /data/config.json
 fi
 
-if [ ! -f  "/data/log.txt" ];
+if [ ! -f  "/logs/log.txt" ];
 then
-    touch /data/log.txt
-    chmod 776 /data/log.txt
+    touch /logs/log.txt
+    chmod 776 /logs/log.txt
 fi
 
 mkdir /data/widgets

@@ -41,7 +41,8 @@ Control all your OctoPrint 3D Printers in one place with 3D Print Console!
     sftp:
         image: markusmcnugen/sftp
         volumes:
-            - ./data:/home/admin/data
+          - ./data:/home/admin/data
+          - ./logs:/home/admin/logs
         ports:
             - "9022:22"
         command: admin:YOUR_PASSWORD_HERE:::data
@@ -51,6 +52,7 @@ Control all your OctoPrint 3D Printers in one place with 3D Print Console!
       image: longridgehighschool/3d-print-console-defaults
       volumes:
         - "./data:/data"
+        - "./logs:/logs"
   ```
 
 5. Adjust the port settings to match the ones you want to use.
