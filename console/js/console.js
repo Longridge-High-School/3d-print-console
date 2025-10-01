@@ -286,7 +286,14 @@ async function GetCurrentFile (host, key)
     }
     else
     {
-        return data.job.file.name;
+        if (maxFileNameLength > 4 && data.job.file.name.length > maxFileNameLength)
+        {
+            return data.job.file.name.substring (0, maxFileNameLength - 3) + "..."; // Truncate file names.
+        }
+        else
+        {
+            return data.job.file.name;
+        }
     }
 }
 

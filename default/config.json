@@ -2,5 +2,6 @@
     "brandColour": "#252d5c",
     "smallScreenLiveColour": "#586497EE",
     "headerFooterTextColour": "#FFFFFF",
+    "maxFileNameLength": 32,
     "logServer": "http://localhost:9000"
 }
