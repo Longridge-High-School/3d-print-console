@@ -13,9 +13,9 @@ services:
     restart: unless-stopped
 
   log:
-    build: ./logs
+    build: ./logserver
     volumes:
-      - "./data:/data"
+      - "./logs:/data"
     ports:
       - "9000:80"
     restart: unless-stopped
@@ -24,6 +24,7 @@ services:
       image: markusmcnugen/sftp
       volumes:
           - ./data:/home/admin/data
+          - ./logs:/home/admin/logs
       ports:
           - "22:22"
       command: admin:password:::data
@@ -33,3 +34,4 @@ services:
     build: ./default
     volumes:
       - "./data:/data"
+      - "./logs:/logs"

@@ -30,6 +30,11 @@ async function AddWidgetsFromFile ()
         }
     }
 
+    if (parameterList.get ("hide-widgets") === "true" && parameterList.has ("hide-widgets"))
+    {
+        return; // Allow users to speed up the app by not loading widgets.
+    }
+
     const response2 = await fetch ("/data/widgets.json");
     var widgets = await response2.json ();
 
