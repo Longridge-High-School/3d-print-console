@@ -1,0 +1,64 @@
+{
+   "name": "3D Print Console",
+   "start_url": "/",
+   "display": "standalone",
+   "icons": [
+        {
+            "src": "/img/icon_pwa_48.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "/img/icon_pwa_72.png",
+            "type": "image/png",
+            "sizes": "72x72"
+        },
+        {
+            "src": "/img/icon_pwa_96.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "/img/icon_pwa_144.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "/img/icon_pwa_168.png",
+            "type": "image/png",
+            "sizes": "168x168"
+        },
+        {
+            "src": "/img/icon_pwa_256.png",
+            "type": "image/png",
+            "sizes": "256x256"
+        },
+        {
+            "src": "/img/icon_pwa_384.png",
+            "type": "image/png",
+            "sizes": "384x384"
+        },
+        {
+            "src": "/img/icon_pwa_512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+            {
+            "src": "/img/icon_pwa_mask_512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable"
+        },
+        {
+            "src": "/img/icon_pwa_1024.png",
+            "type": "image/png",
+            "sizes": "1024x1024"
+        }
+    ],
+    "theme_color": "Azure",
+    "background_color": "WhiteSmoke",
+    "lang": "en-gb",
+    "orientation": "landscape",
+    "description": "Control all your OctoPrint 3D Printers in one place with 3D Print Console!",
+    "categories": ["design", "utilities"]
+}
