@@ -40,7 +40,7 @@ async function AddWidgetsFromFile ()
 
     for (var widget of widgets)
     {
-        if (widget.enabled === "true")
+        if (widget.enabled == true)
         {
             if (await CheckValidURL ("/data/widgets" + widget.url))
             {

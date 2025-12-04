@@ -318,18 +318,25 @@ async function Job (id, command)
 
 async function WriteLog (message)
 {
-    form = new FormData ();
-    form.append ("entry", message);
-
-    const options =
+    if (sessionStorage.getItem ("IS_3D_PRINT_CONSOLE_DOTNET") == "true") // Try using 3D Print Console .NET if we're using it.
     {
-        method: "POST",
-        mode: "cors",
-        headers: new Headers (),
-        body: form
-    };
+        await fetch ("/log?message=" + message);
+    }
+    else
+    {
+        form = new FormData ();
+        form.append ("entry", message);
 
-    const response = await fetch (logServer, options);
+        const options =
+        {
+            method: "POST",
+            mode: "cors",
+            headers: new Headers (),
+            body: form
+        };
+
+        const response = await fetch (logServer, options);
+    }
 }
 
 var printers;
