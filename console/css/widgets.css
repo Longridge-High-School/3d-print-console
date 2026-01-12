@@ -1,6 +1,6 @@
 body
 {
-    font-family: Calibri, sans-serif;
+    font-family: Calibri, Helvetica, Arial, sans-serif;
     background-color: #F2F2F2;
     font-size: 1em;
 }
@@ -51,7 +51,7 @@ a
     font-size: 0.75em;
 }
 
-button, input[type=file]::file-selector-button
+button, select, input[type=file]::file-selector-button
 {
     margin: 5px;
     border-radius: 9px;
@@ -71,4 +71,10 @@ button:hover, input[type=file]::file-selector-button:hover
 label, input[type=range]
 {
     vertical-align: middle;
+}
+
+label
+{
+    font-weight: bold;
+    font-size: 0.5em;
 }
