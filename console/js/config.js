@@ -14,4 +14,5 @@ async function LoadConfig ()
 
 var maxFileNameLength;
 var logServer;
+
 LoadConfig ();

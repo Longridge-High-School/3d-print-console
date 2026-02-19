@@ -114,7 +114,7 @@ footer a
 {
     color: var(--headerFooterTextColour);
     font-size: 1em;
-    font-family: Calibri, sans-serif;
+    font-family: Calibri, Helvetica, Arial, sans-serif;
 }
 
 tr

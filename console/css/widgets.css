@@ -51,7 +51,7 @@ a
     font-size: 0.75em;
 }
 
-button, select, input[type=file]::file-selector-button
+button, input[type=file]::file-selector-button
 {
     margin: 5px;
     border-radius: 9px;
@@ -63,9 +63,8 @@ button, select, input[type=file]::file-selector-button
 
 button:hover, input[type=file]::file-selector-button:hover
 {
-    background-color: var(--brandColour);
+    background-color: #252d5c;
     color: white;
-    border: 1.5px solid var(--brandColour);
 }
 
 label, input[type=range]
