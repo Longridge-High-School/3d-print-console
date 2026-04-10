@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang = "en-gb">
+  <head>
+    <meta charset = "utf-8">
+    <title>{{ page.title }} - 3D Print Console Docs</title>
+    <link rel = "stylesheet" href = "/css/style.css">
+  </head>
+  <body>
+    <header>
+      <img src = "/img/ui/logo.svg" alt = "3D Print Console Docs"/>
+      <button onclick = "MenuButton ()" class = "Menu">
+        <img src = "/img/ui/menu.svg" alt = "Menu" class = "Menu" width = 77 height = 95/>
+      </button>
+      <h1>3D Print Console Docs</h1>
+    </header>
+    <main>
+      <nav class = "Menu">
+        <a href = "/">Home</a>
+        <a href = "/gettingstarted">Getting Started with 3D Print Console</a>
+        <a href = "/setup">Setting Up 3D Print Console</a>
+        <div>
+          <a href = "/setup/printers">Adding Printers</a>
+          <a href = "/setup/cameras">Adding Cameras</a>
+          <a href = "/setup/config">Other Settings</a>
+          <a href = "/setup/https">Setting Up HTTPS</a>
+        </div>
+        <a href = "/updating">Updating 3D Print Console</a>
+        <a href = "/dotnet">3D Print Console for .NET</a>
+        <div>
+          <a href = "/dotnet/setup/windows">Installation on Windows</a>
+          <a href = "/dotnet/setup/docker">Installation using Docker</a>
+          <a href = "/dotnet/serverconfig">Server Settings</a>
+        </div>
+        <a href = "/widgets">Widgets</a>
+        <div>
+          <a href = "/widgets/slicer">Slicing using the Slicer Widget</a>
+          <a href = "/widgets/wdk">Making a Widget</a>
+        </div>
+      </nav>
+      <h1>{{ page.title }}</h1>
+      <hr>
+      {{ content }}
+    </main>
+    <footer>&copy; {{ site.time | date: '%Y' }} Longridge High School</footer>
+  </body>
+  <script type = "text/JavaScript">
+
+    const nav = document.getElementsByTagName ("nav")[0];
+    var menuOpen = false;
+
+    function MenuButton ()
+    {
+      if (!menuOpen)
+      {
+        menuOpen = true;
+        nav.style.display = "inline";
+      }
+      else
+      {
+        menuOpen = false;
+        nav.style.display = "none";
+      }
+    }
+
+    document.addEventListener ("click", (e) =>
+    {
+      if (!e.target.classList.contains ("Menu"))
+      {
+        menuOpen = false;
+        nav.style.display = "none";
+      }
+    });
+
+  </script>
+</html>
