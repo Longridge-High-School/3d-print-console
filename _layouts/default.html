@@ -4,6 +4,7 @@
     <meta charset = "utf-8">
     <title>{{ page.title }} - 3D Print Console Docs</title>
     <link rel = "stylesheet" href = "{{ site.baseurl }}/css/style.css">
+    <link rel = "icon" type = "image/x-icon" href = "{{ site.baseurl }}/favicon.ico">
   </head>
   <body>
     <header>
@@ -15,26 +16,25 @@
     </header>
     <main>
       <nav class = "Menu">
-        <a href = "/">Home</a>
-        <a href = "/gettingstarted">Getting Started with 3D Print Console</a>
-        <a href = "/setup">Setting Up 3D Print Console</a>
+        <a href = "{{ site.baseurl }}/">Home</a>
+        <a href = "{{ site.url }}{{ site.baseurl }}/gettingstarted">Getting Started with 3D Print Console</a>
+        <a href = "{{ site.url }}{{ site.baseurl }}/setup">Setting Up 3D Print Console</a>
         <div>
-          <a href = "/setup/printers">Adding Printers</a>
-          <a href = "/setup/cameras">Adding Cameras</a>
-          <a href = "/setup/config">Other Settings</a>
-          <a href = "/setup/https">Setting Up HTTPS</a>
+          <a href = "{{ site.url }}{{ site.baseurl }}/setup/printers">Adding Printers</a>
+          <a href = "{{ site.url }}{{ site.baseurl }}/setup/cameras">Adding Cameras</a>
+          <a href = "{{ site.url }}{{ site.baseurl }}/setup/config">Other Settings</a>
         </div>
-        <a href = "/updating">Updating 3D Print Console</a>
-        <a href = "/dotnet">3D Print Console for .NET</a>
+        <a href = "{{ site.url }}{{ site.baseurl }}/updating">Updating 3D Print Console</a>
+        <a href = "{{ site.url }}{{ site.baseurl }}/dotnet">3D Print Console for .NET</a>
         <div>
-          <a href = "/dotnet/setup/windows">Installation on Windows</a>
-          <a href = "/dotnet/setup/docker">Installation using Docker</a>
-          <a href = "/dotnet/serverconfig">Server Settings</a>
+          <a href = "{{ site.url }}{{ site.baseurl }}/dotnet/setup/windows">Installation on Windows</a>
+          <a href = "{{ site.url }}{{ site.baseurl }}/dotnet/setup/docker">Installation using Docker</a>
+          <a href = "{{ site.url }}{{ site.baseurl }}/dotnet/serverconfig">Server Settings</a>
         </div>
-        <a href = "/widgets">Widgets</a>
+        <a href = "{{ site.url }}{{ site.baseurl }}/widgets">Widgets</a>
         <div>
-          <a href = "/widgets/slicer">Slicing using the Slicer Widget</a>
-          <a href = "/widgets/wdk">Making a Widget</a>
+          <a href = "{{ site.url }}{{ site.baseurl }}/widgets/slicer">3D Print Console Slicer</a>
+          <a href = "{{ site.url }}{{ site.baseurl }}/widgets/wdk">Making a Widget</a>
         </div>
       </nav>
       <h1>{{ page.title }}</h1>

@@ -1,2 +1,3 @@
 title: Documentation - 3D Print Console
-baseurl: "https://longridge-high-school.github.io/3d-print-console"
+url: https://longridge-high-school.github.io
+baseurl: /3d-print-console

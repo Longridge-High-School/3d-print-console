@@ -8,7 +8,7 @@ permalink: /
 
 **Control all your OctoPrint 3D Printers in one place with 3D Print Console!**
 
-<img class = "ImageLarge" src = "/img/3d_print_console_lhs.png" alt = "The 3D Print Console interface." />
+<img class = "ImageLarge" src = "{{ site.baseurl }}/img/3d_print_console_lhs.png" alt = "The 3D Print Console interface." />
 
 3D Print Console is a free and open-source (MIT License) web app, that allows you to set up and control your own 3D print farm using [OctoPrint](https://octoprint.org/)-compatible printers.
 
@@ -24,11 +24,11 @@ permalink: /
 
 ## How do I use 3D Print Console?
 
-**Coming soon!**
+Please see [**Getting Started with 3D Print Console**]({{ site.url }}{{ site.baseurl }}/gettingstarted).
 
 ## How do I set up 3D Print Console?
 
-**Coming soon!**
+Please see [**Setting up 3D Print Console**]({{ site.url }}{{ site.baseurl }}/setup).
 
 ## How do I report an issue or suggest a feature?
 
