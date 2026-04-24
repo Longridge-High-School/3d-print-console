@@ -6,8 +6,6 @@ permalink: /dotnet
 
 ---
 
-{% include warning.html content = "3D Print Console for .NET is still in beta!" %}
-
 3D Print Console for .NET is 3D Print Console running on ASP.NET.
 
 <img class = "ImageLarge" src = "{{ site.url }}{{ site.baseurl }}/img/dotnet/console.jpg" alt = "The same 3D Print Console you know." />
