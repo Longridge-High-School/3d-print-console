@@ -31,5 +31,5 @@ then
 fi
 
 mkdir /data/widgets
-chmod -R 776 /data/widgets
+chmod -R 777 /data/widgets
 chmod 777 /data/widgets

@@ -9,7 +9,7 @@ Control all your OctoPrint 3D Printers in one place with 3D Print Console!
 - Print jobs are logged, including which device sent them.
 - Controls can be disabled for a non-intearctable display.
 - Printers can be locked by the admin(s) for important jobs.
-- Widget support.
+- [Widget support](https://github.com/Longridge-High-School/3d-print-console-widgets).
 - Compatible with [OctoKlipper](https://plugins.octoprint.org/plugins/klipper/).
  
 ## Getting Started
@@ -21,38 +21,38 @@ Control all your OctoPrint 3D Printers in one place with 3D Print Console!
 
   **docker-compose.yaml:**
   ```
-  services:
-    console:
-      image: longridgehighschool/3d-print-console
-      volumes:
-        - "./data:/www/data:ro"
-      ports:
-        - "8000:80"
-      restart: unless-stopped
+    services:
+      console:
+          image: longridgehighschool/3d-print-console
+          volumes:
+              - "./data:/www/data:ro"
+          ports:
+              - "8000:80"
+          restart: unless-stopped
 
-    log:
-      image: longridgehighschool/3d-print-console-logs
-      volumes:
-        - "./data:/data"
-      ports:
-        - "9000:80"
-      restart: unless-stopped
+      log:
+          image: longridgehighschool/3d-print-console-logs
+          volumes:
+              - "./logs:/data"
+          ports:
+              - "9000:80"
+          restart: unless-stopped
 
-    sftp:
-        image: markusmcnugen/sftp
-        volumes:
-          - ./data:/home/admin/data
-          - ./logs:/home/admin/logs
-        ports:
-            - "9022:22"
-        command: admin:YOUR_PASSWORD_HERE:::data
-        restart: unless-stopped
+      sftp:
+          image: markusmcnugen/sftp
+          volumes:
+              - ./data:/home/admin/data
+              - ./logs:/home/admin/logs
+          ports:
+              - "9022:22"
+          command: admin:YOUR_PASSWORD_HERE:::data
+          restart: unless-stopped
 
-    defaults: 
-      image: longridgehighschool/3d-print-console-defaults
-      volumes:
-        - "./data:/data"
-        - "./logs:/logs"
+      defaults: 
+          image: longridgehighschool/3d-print-console-defaults
+          volumes:
+              - "./data:/data"
+              - "./logs:/logs"
   ```
 
 5. Adjust the port settings to match the ones you want to use.
