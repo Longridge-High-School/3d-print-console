@@ -1,91 +1,38 @@
 # 3D Print Console
 
-Control all your OctoPrint 3D Printers in one place with 3D Print Console!
+**Control all your OctoPrint 3D Printers in one place with 3D Print Console!**
+
+📖 [**Documentation**](https://longridge-high-school.github.io/3d-print-console/)
+
+
+---
+
+3D Print Console is a free and open-source (MIT License) web app, that allows you to set up and control your own 3D print farm using [OctoPrint](https://octoprint.org/)-compatible printers.
+
+![image](https://longridge-high-school.github.io/3d-print-console/img/3d_print_console_lhs.png)
 
 ## Features of 3D Print Console
 
 - Most basic 3D Printing commands all in one place.
 - Keep an eye on your prints with embedded webcam views.
 - Print jobs are logged, including which device sent them.
-- Controls can be disabled for a non-intearctable display.
 - Printers can be locked by the admin(s) for important jobs.
-- [Widget support](https://github.com/Longridge-High-School/3d-print-console-widgets).
-- Compatible with [OctoKlipper](https://plugins.octoprint.org/plugins/klipper/).
- 
-## Getting Started
+- Extensible using widgets.
+- Compatible with OctoKlipper.
+- Can be installed as a PWA (Progressive Web App).
 
-1. Set up [OctoPrint](https://octoprint.org/) for your 3D printer and create an API key.
-2. [Install Docker.](https://www.docker.com/get-started/)
-3. Create a directory for your 3D Print Console installation.
-4. Create a file inside your directory called ```docker-compose.yaml``` and copy the following into it:
+## How do I use 3D Print Console?
 
-  **docker-compose.yaml:**
-  ```
-    services:
-      console:
-          image: longridgehighschool/3d-print-console
-          volumes:
-              - "./data:/www/data:ro"
-          ports:
-              - "8000:80"
-          restart: unless-stopped
+Please see [**Getting Started with 3D Print Console**](https://longridge-high-school.github.io/3d-print-console/gettingstarted).
 
-      log:
-          image: longridgehighschool/3d-print-console-logs
-          volumes:
-              - "./logs:/data"
-          ports:
-              - "9000:80"
-          restart: unless-stopped
+## How do I set up 3D Print Console?
 
-      sftp:
-          image: markusmcnugen/sftp
-          volumes:
-              - ./data:/home/admin/data
-              - ./logs:/home/admin/logs
-          ports:
-              - "9022:22"
-          command: admin:YOUR_PASSWORD_HERE:::data
-          restart: unless-stopped
+Please see [**Setting up 3D Print Console**](https://longridge-high-school.github.io/3d-print-console/setup).
 
-      defaults: 
-          image: longridgehighschool/3d-print-console-defaults
-          volumes:
-              - "./data:/data"
-              - "./logs:/logs"
-  ```
+## How do I report an issue or suggest a feature?
 
-5. Adjust the port settings to match the ones you want to use.
-6. Replace ```YOUR_PASSWORD_HERE``` with your choice of password, preferably one that is not used for anything else. This will be used for accessing the config files and logs.
-7. Run ```docker compose up``` or ```docker compose up -d```.
-8. Open a web browser, and navigate to the IP / hostname of your host and port of your ```console``` container, and check if it is running.
-9. Do the same for the ```logs``` container.
-10. Open your preferred SFTP client, and log into your host with the username ```admin``` and the password you set in Step 6.
-11. Open the ```data``` directory, and then open ```printers.json```. It should look something like this:
-```
-[
-    {
-      "id": "0",
-      "name": "Sample Printer",
-      "host": "OCTOPRINT URL HERE",
-      "filament": "rgb(12, 246, 0)",
-      "key": "OCTOPRINT KEY HERE",
-      "background": "DeepSkyBlue",
-      "port": "/dev/ttyUSB0",
-      "file": ".gcode",
-      "locked": false
-    }
-]
-```
-12. Replace "Sample Printer" with a more fitting name.
-13. Set the ```host``` value to be the URL of your OctoPrint server.
-14. Set the ```filament``` value to a [HTML colour name](https://www.w3schools.com/TAGS/ref_colornames.asp) or an RGB value for your current filament colour. You can use RGBA for transparent filament.
-15. Copy the API key you created in Step 1 into the ```key``` value.
-16. Set the ```background``` value to any colour you like in the same way as in Step 14.
-17. Set the ```port``` value to the USB port **on the OctoPrint server** that your printer is connected to. This will be something like "/dev/ttyUSB0, "COM3" or "/tmp/printer" if you use OctoKlipper.
-18. Set the ```file``` value to match the extension your 3D printer expects. The default is ".gcode". **Make sure to include the "."!**
-19. Save your changes.
-20. Open ```cameras.json```.
-21. Set the ```title``` value to any name you like, and set the ```url``` value to the URL of your webcam. If you haven't got this set up, delete the JSON object.
-22. Save your changes.
-23. Refresh the Console page, and your 3D printer should be visible and ready to accept jobs.
+Please report any bugs and request features you would like to see on GitHub.
+
+- For bugs and requests related to widgets, raise an issue [here](https://github.com/Longridge-High-School/3d-print-console-widgets/issues). Make sure you label your issue with the widget(s) affected.
+- For anything _specific_ to 3D Print Console for .NET, raise an issue [here](https://github.com/Longridge-High-School/3d-print-console-dotnet/issues).
+- For everything else, raise an issue [here](https://github.com/Longridge-High-School/3d-print-console/issues).
