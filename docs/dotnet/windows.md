@@ -10,7 +10,7 @@ permalink: /dotnet/setup/windows
 
 2. Log into your server.
 
-3. Download and install [.NET Runtime 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+3. Download and install [.NET 8 Runtime or later](https://dotnet.microsoft.com/en-us/download/dotnet/).
 
 4. Download and run the [3D Print Console for .NET installer](https://github.com/Longridge-High-School/3d-print-console-dotnet/releases/latest/download/3d-print-console-dotnet-win64.exe).
 

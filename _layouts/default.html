@@ -5,6 +5,8 @@
     <title>{{ page.title }} - 3D Print Console Docs</title>
     <link rel = "stylesheet" href = "{{ site.baseurl }}/css/style.css">
     <link rel = "icon" type = "image/x-icon" href = "{{ site.baseurl }}/favicon.ico">
+    <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css">
+    <script src = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
   </head>
   <body>
     <header>
@@ -34,42 +36,71 @@
         <a href = "{{ site.url }}{{ site.baseurl }}/widgets">Widgets</a>
         <div>
           <a href = "{{ site.url }}{{ site.baseurl }}/widgets/slicer">3D Print Console Slicer</a>
-          <a href = "{{ site.url }}{{ site.baseurl }}/widgets/wdk">Making a Widget</a>
+          <a href = "{{ site.url }}{{ site.baseurl }}/widgets/tutorial">Making a Widget</a>
+          <a href = "{{ site.url }}{{ site.baseurl }}/widgets/wdk">WDK Reference</a>
         </div>
       </nav>
       <h1>{{ page.title }}</h1>
       <hr>
       {{ content }}
     </main>
-    <footer>&copy; {{ site.time | date: '%Y' }} Longridge High School</footer>
-  </body>
-  <script type = "text/JavaScript">
+    <script type = "text/JavaScript">
 
-    const nav = document.getElementsByTagName ("nav")[0];
-    var menuOpen = false;
+      const nav = document.getElementsByTagName ("nav")[0];
+      var menuOpen = false;
 
-    function MenuButton ()
-    {
-      if (!menuOpen)
+      function MenuButton ()
       {
-        menuOpen = true;
-        nav.style.display = "inline";
+        if (!menuOpen)
+        {
+          menuOpen = true;
+          nav.style.display = "inline";
+        }
+        else
+        {
+          menuOpen = false;
+          nav.style.display = "none";
+        }
       }
-      else
-      {
-        menuOpen = false;
-        nav.style.display = "none";
-      }
-    }
 
-    document.addEventListener ("click", (e) =>
-    {
-      if (!e.target.classList.contains ("Menu"))
+      document.addEventListener ("click", (e) =>
       {
-        menuOpen = false;
-        nav.style.display = "none";
-      }
-    });
+        if (!e.target.classList.contains ("Menu"))
+        {
+          menuOpen = false;
+          nav.style.display = "none";
+        }
+      });
 
   </script>
+  <noscript>
+    <menu> <!-- Menu if JavaScript is unavailable -->
+      <h2>Navigation Menu</h2>
+      <hr>
+      <a href = "{{ site.baseurl }}/">Home</a>
+      <a href = "{{ site.url }}{{ site.baseurl }}/gettingstarted">Getting Started with 3D Print Console</a>
+      <a href = "{{ site.url }}{{ site.baseurl }}/setup">Setting Up 3D Print Console</a>
+      <div>
+        <a href = "{{ site.url }}{{ site.baseurl }}/setup/printers">Adding Printers</a>
+        <a href = "{{ site.url }}{{ site.baseurl }}/setup/cameras">Adding Cameras</a>
+        <a href = "{{ site.url }}{{ site.baseurl }}/setup/config">Other Settings</a>
+      </div>
+      <a href = "{{ site.url }}{{ site.baseurl }}/updating">Updating 3D Print Console</a>
+      <a href = "{{ site.url }}{{ site.baseurl }}/dotnet">3D Print Console for .NET</a>
+      <div>
+        <a href = "{{ site.url }}{{ site.baseurl }}/dotnet/setup/windows">Installation on Windows</a>
+        <a href = "{{ site.url }}{{ site.baseurl }}/dotnet/setup/docker">Installation using Docker</a>
+        <a href = "{{ site.url }}{{ site.baseurl }}/dotnet/serverconfig">Server Settings</a>
+      </div>
+      <a href = "{{ site.url }}{{ site.baseurl }}/widgets">Widgets</a>
+      <div>
+        <a href = "{{ site.url }}{{ site.baseurl }}/widgets/slicer">3D Print Console Slicer</a>
+        <a href = "{{ site.url }}{{ site.baseurl }}/widgets/tutorial">Making a Widget</a>
+        <a href = "{{ site.url }}{{ site.baseurl }}/widgets/wdk">WDK Reference</a>
+      </div>
+    </menu>
+  </noscript>
+  <footer>&copy; {{ site.time | date: '%Y' }} Longridge High School</footer>
+  </body>
+  <script>hljs.highlightAll ();</script>
 </html>

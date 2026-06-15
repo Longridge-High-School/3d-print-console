@@ -13,7 +13,7 @@ header
 {
     background-color: #252d5c;
     color: white;
-    max-width: 1400px;
+    max-width: 1152px;
     margin: auto;
     padding-left: 1em;
     padding-right: 1em;
@@ -80,27 +80,40 @@ nav a:hover
     background-color: #586497;
 }
 
-nav div
+nav div, menu div
 {
     margin-left: 20px;
 }
 
-main
+main, menu
 {
     text-align: left;
     background-color: white;
-    max-width: 1400px;
+    max-width: 1152px;
     margin: auto;
     padding: 1em;
     min-height: calc(100vh - 3em - 190px);
     border-radius: 10px;
     position: relative;
+    color: #3b3b3b;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+menu
+{
+    margin-top: 1em;
+}
+
+menu a
+{
+    display: block;
 }
 
 footer
 {
     color: white;
-    max-width: 1400px;
+    max-width: 1152px;
     margin: auto;
     padding-left: 1em;
     padding-right: 1em;

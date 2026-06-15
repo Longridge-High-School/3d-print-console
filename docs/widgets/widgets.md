@@ -10,12 +10,15 @@ permalink: /widgets
 
 ## What are widgets?
 
-Widgets are small addons for 3D Print Console that expand what it can do. As of April 2026, the following widgets are available:
+Widgets are small addons for 3D Print Console that expand what it can do. As of June 2026, the following widgets are available:
 
 - **Document Viewer** - adds custom text and image content to 3D Print Console.
 - **GCODE Library** - stores GCODE files inside 3D Print Console itself so they can be printed again quickly.
 - **Performance Monitor** - can display the performance of a server or a printer that contains an SBC.
-- **Slicer** - slice STL files and send them to 3D Print Console all from in your browser.
+- **Slicer** - slice STL files and send them to 3D Print Console all from in your browser (for 3D Print Console v2.4 or later).
+- **Slicer Legacy** - slice STL files and send them to 3D Print Console all from in your browser (for 3D Print Console v2.3 or earlier).
+- **Toolbox** - run maintenance operations from within 3D Print Console.
+- **Notifications** - get desktop notifications about how your printers are doing, even when you're not looking at 3D Print Console.
 
 ## How do I install widgets?
 
@@ -85,4 +88,4 @@ Make sure you save your changes!
 
 ## How do I make my own widgets?
 
-Please see the guide [here]({{ site.url }}{{ site.baseurl }}/widgets/wdk).
+Please see the guide [here]({{ site.url }}{{ site.baseurl }}/widgets/tutorial).
