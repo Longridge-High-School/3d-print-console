@@ -45,24 +45,125 @@ async function CreateTable ()
 
                 row += `<td style = "text-align: center;"><h3>${printer.name}</h3><br><p><a href = "${managementURL}" target = "_blank">Access Device</a></p></td>`;
                 row += `<td>
-                                        <b>Status:</b>
-                                        <br>` + status + `<br><br>
-                                        ` + await GetJobStatus (printer.host, printer.key) + `
-                                    </td>`;
+                            <b>Status:</b>
+                            <br>` + status + `<br><br>
+                            ` + await GetJobStatus (printer.host, printer.key) + `
+                        </td>`;
                 row += "<td><b>Current File:</b><br>" + await GetCurrentFile (printer.host, printer.key) + "</td>";
+
+                var defs, filament;
+
+                if (printer.filaments)
+                {
+                    defs = `<defs><linearGradient id = "gradient" x1 = "0%" x2 = "100%" y1 = "0%" y2 = "0%">`;
+                    filament = "url(#gradient)";
+
+                    var offset = 0;
+                    
+                    for (var colour of printer.filaments)
+                    {
+                        defs += `<stop offset = "${offset}%" stop-color = "${colour}" />`;
+                        offset += 100 / printer.filaments.length;
+                    }
+
+                    defs += `</linearGradient></defs>`;
+                }
+                else
+                {
+                    defs = "";
+                    filament = printer.filament;
+                }
+
                 row += `<td>
-                                    <b>Filament Colour:</b><br>
-                                    <svg width = "30" height = "30" xmlns = "http://www.w3.org/2000/svg">
-                                        <pattern id = "pattern-checkers" x = "0" y = "0" width = "10" height = "10" patternUnits = "userSpaceOnUse">
-                                            <rect fill = "grey" x = "0" width = "5" height = "5" y = "0"></rect>
-                                            <rect fill = "white" x = "5" width = "5" height = "5" y = "0"></rect>
-                                            <rect fill = "white" x = "0" width = "5" height = "5" y = "5"></rect>
-                                            <rect fill = "grey" x = "5" width = "5" height = "5" y = "5"></rect>
-                                        </pattern>
-                                        <circle cx = "15" cy = "15" r = "10" stroke = "black" stroke-width = "2" fill = "url(#pattern-checkers)" />
-                                        <circle cx = "15" cy = "15" r = "10" stroke = "black" stroke-width = "2" fill = "${printer.filament}" />
-                                    </svg>
-                                </td>`;
+                            <b>Filament Colour:</b><br>
+                            <svg width = "30" height = "30" xmlns = "http://www.w3.org/2000/svg">
+                                ${defs}
+                                <pattern id = "pattern-checkers" x = "0" y = "0" width = "10" height = "10" patternUnits = "userSpaceOnUse">
+                                    <rect fill = "grey" x = "0" width = "5" height = "5" y = "0"></rect>
+                                    <rect fill = "white" x = "5" width = "5" height = "5" y = "0"></rect>
+                                    <rect fill = "white" x = "0" width = "5" height = "5" y = "5"></rect>
+                                    <rect fill = "grey" x = "5" width = "5" height = "5" y = "5"></rect>
+                                </pattern>
+                                <circle cx = "15" cy = "15" r = "10" stroke = "black" stroke-width = "2" fill = "url(#pattern-checkers)" />
+                                <circle cx = "15" cy = "15" r = "10" stroke = "black" stroke-width = "2" fill = "${filament}" />
+                            </svg>
+                            <br/>
+                            <b>Material:</b><br>`;
+
+                var material;
+
+                if (printer.material == null)
+                {
+                    material = "PLA"; // Default to PLA.
+                }
+                else
+                {
+                    material = printer.material.toUpperCase (); // Force all-caps
+                }
+
+                switch (material)
+                {
+                    case "PLA":
+                        row += `PLA <button onclick="window.open ('https://www.simplify3d.com/resources/materials-guide/pla/', '_blank', 'toolbar=0,location=0,menubar=0');">❓</button>`;
+                        break;
+
+                    case "NYLON":
+                        row += `Nylon <button onclick="window.open ('https://www.simplify3d.com/resources/materials-guide/nylon/', '_blank', 'toolbar=0,location=0,menubar=0');">❓</button>`;
+                        break;
+
+                    case "TPU":
+                        row += `TPU <button onclick="window.open ('https://www.simplify3d.com/resources/materials-guide/flexible/', '_blank', 'toolbar=0,location=0,menubar=0');">❓</button>`;
+                        break;
+
+                    case "ABS":
+                        row += `ABS <button onclick="window.open ('https://www.simplify3d.com/resources/materials-guide/abs/', '_blank', 'toolbar=0,location=0,menubar=0');">❓</button>`;
+                        break;
+
+                    case "ASA":
+                        row += `ASA <button onclick="window.open ('https://www.simplify3d.com/resources/materials-guide/asa/', '_blank', 'toolbar=0,location=0,menubar=0');">❓</button>`;
+                        break;
+
+                    case "PETG":
+                        row += `PETG <button onclick="window.open ('https://www.simplify3d.com/resources/materials-guide/petg/', '_blank', 'toolbar=0,location=0,menubar=0');">❓</button>`;
+                        break;
+
+                    case "HIPS":
+                        row += `HIPS <button onclick="window.open ('https://www.simplify3d.com/resources/materials-guide/hips/', '_blank', 'toolbar=0,location=0,menubar=0');">❓</button>`;
+                        break;
+
+                    case "PC":
+                    case "POLYCARBONATE":
+                        row += `Polycarbonate <button onclick="window.open ('https://www.simplify3d.com/resources/materials-guide/polycarbonate/', '_blank', 'toolbar=0,location=0,menubar=0');">❓</button>`;
+                        break;
+
+                    case "POLYPROPYLENE":
+                        row += `Polypropylene <button onclick="window.open ('https://www.simplify3d.com/resources/materials-guide/polypropylene/', '_blank', 'toolbar=0,location=0,menubar=0');">❓</button>`;
+                        break;
+
+                    case "PVA":
+                        row += `PVA <button onclick="window.open ('https://www.simplify3d.com/resources/materials-guide/pva/', '_blank', 'toolbar=0,location=0,menubar=0');">❓</button>`;
+                        break;
+
+                    case "METAL PLA":
+                        row += `Metal-Filled PLA <button onclick="window.open ('https://www.simplify3d.com/resources/materials-guide/metal-filled/', '_blank', 'toolbar=0,location=0,menubar=0');">❓</button>`;
+                        break;
+
+                    case "WOOD PLA":
+                        row += `Wood-Filled PLA <button onclick="window.open ('https://www.simplify3d.com/resources/materials-guide/wood-filled/', '_blank', 'toolbar=0,location=0,menubar=0');">❓</button>`;
+                        break;
+
+                    case "CF":
+                    case "CARBON FIBER":
+                    case "CARBON FIBRE":
+                        row += `Carbon Fibre <button onclick="window.open ('https://www.simplify3d.com/resources/materials-guide/carbon-fiber-filled/', '_blank', 'toolbar=0,location=0,menubar=0');">❓</button>`;
+                        break;                    
+
+                    default:
+                        row += `${printer.material}`;
+                }
+
+                row += `</td>`;
+
                 if (printer.locked)
                 {
                     if (!CheckKioskMode ())
