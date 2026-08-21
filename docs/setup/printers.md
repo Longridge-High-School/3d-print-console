@@ -36,6 +36,8 @@ Here is what all the properties mean:
 | name | Name of this printer shown on the console. | ❌ |
 | host | URL of the OctoPrint server that this printer uses. | ❌ |
 | filament | Colour of filament currently in this printer. This can be a [name](https://www.w3schools.com/tags/ref_colornames.asp), an RGB value, or a hex colour code. You'll need to change this when you change the filament. | ❌ |
+| filaments | A list of colours used by the printer. Use this if your filament is multicoloured or your printer has a multi-material unit. Leave empty if not needed. | ✔️ |
+| material | The material in this printer. Choosing certain materials here will cause an information button to appear next to the material - see list below. Defaults to PLA.| ✔️ |
 | key | OctoPrint API key for this printer. | ❌ |
 | background | Colour of the background shown on console. This can be a [name](https://www.w3schools.com/tags/ref_colornames.asp), an RGB value, or a hex colour code. | ❌ |
 | managementURL | A URL for the OctoPrint web UI if it is not accessible via the URL specified in the "host" property. | ✔️ |
@@ -46,3 +48,19 @@ Here is what all the properties mean:
 To add more than 1 printer, place a "," after the closing brace of the printer object, and add another object underneath it. You can have as many printers as you want.
 
 {% include tip.html content = "If you don't see any changes, hard refresh the console page a few times." %}
+
+### Materials With Information
+
+- PLA
+- PETG
+- ABS
+- ASA
+- TPU
+- Nylon
+- HIPS
+- Polycarbonate (or PC)
+- Polypropylene
+- PVA
+- Metal PLA
+- Wood PLA
+- Carbon Fibre (or CF or Carbon Fiber)
