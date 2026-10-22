@@ -1,4 +1,4 @@
-FROM php:8.6-apache
+FROM php:8.5.12-apache
 
 EXPOSE 80
 
